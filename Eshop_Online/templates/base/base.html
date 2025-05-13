@@ -1,9 +1,9 @@
-{% include 'base/header.html' %}
+{% load render_partial %}
 
+{% render_partial 'shop:header' %}
 
 {% block contents%}
   
 {% endblock %}
 
-  
-{% include 'base/footer.html' %}
+{% render_partial 'shop:footer' %}
