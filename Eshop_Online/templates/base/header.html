@@ -94,8 +94,12 @@
           </div>
           <div id="top-links" class="nav pull-right flip">
             <ul>
+              {% if request.user.is_authenticated %}
+              <li><a href="{% url 'shop:logout' %}">خروج</a></li>
+              {% else %}
               <li><a href="{% url 'shop:login' %}">ورود</a></li>
               <li><a href="{% url 'shop:register' %}">ثبت نام</a></li>
+              {% endif%}
             </ul>
           </div>
         </div>

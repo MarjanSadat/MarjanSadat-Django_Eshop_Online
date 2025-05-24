@@ -44,6 +44,10 @@ def login_page(request):
 
 	return render(request, 'login.html', context)
 
+def logout_page(request):
+
+	logout(request)
+	return redirect('/')
 
 
 User = get_user_model()

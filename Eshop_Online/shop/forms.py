@@ -1,6 +1,6 @@
 from django.contrib.auth import get_user_model
 from django import forms
-
+from django.core import validators
 
 
 class LoginForm(forms.Form):
@@ -12,11 +12,15 @@ User = get_user_model()
 
 class RegisterForm(forms.Form):
     userName = forms.CharField(
-        widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'enter your username'})
+        widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'enter your username'}),
+        validators=[
+            validators.MaxLengthValidator(limit_value=20, message='تعداد کاراکتر 20 عدد')
+        ]
     )
 
     email = forms.EmailField(
-        widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'enter your username'})
+        widget=forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'enter your username'}),
+        validators=[validators.EmailValidator('ایمیل نامعتبر است!')]
     )
 
     password = forms.CharField(
